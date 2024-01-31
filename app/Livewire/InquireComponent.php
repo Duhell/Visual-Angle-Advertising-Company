@@ -9,7 +9,7 @@ use Livewire\Attributes\Validate;
 use Livewire\Component;
 
 #[Layout('index')]
-#[Title('Inquire |')]
+#[Title('Inquire | Visual Angle Advertising Company')]
 class InquireComponent extends Component
 {
     #[Validate('required|min:3')]
