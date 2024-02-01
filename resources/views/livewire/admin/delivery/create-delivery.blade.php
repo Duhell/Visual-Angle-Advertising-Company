@@ -1,7 +1,7 @@
 <section class="w-full pb-7">
     <h1 class="font-bold text-2xl">Create New Delivery Receipt</h1>
     @if(session('success'))
-    <div class="alert">
+    <div class="alert mt-4">
         <svg width="32" height="32" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" clip-rule="evenodd" d="M24 4C12.96 4 4 12.96 4 24C4 35.04 12.96 44 24 44C35.04 44 44 35.04 44 24C44 12.96 35.04 4 24 4ZM18.58 32.58L11.4 25.4C10.62 24.62 10.62 23.36 11.4 22.58C12.18 21.8 13.44 21.8 14.22 22.58L20 28.34L33.76 14.58C34.54 13.8 35.8 13.8 36.58 14.58C37.36 15.36 37.36 16.62 36.58 17.4L21.4 32.58C20.64 33.36 19.36 33.36 18.58 32.58Z" fill="#00BA34" />
         </svg>
@@ -20,42 +20,58 @@
                 <div class="flex flex-col col-span-2 justify-center">
                     <label class="text-sm">Full Name</label>
                     <input wire:model='FullName' autocomplete="off" type="text" class="p-1 border-2 w-full rounded-md bg-slate-50">
+                    @error('FullName') <span class="text-xs text-rose-600">{{ $message }}</span>@enderror
                 </div>
+
 
                 <div class="flex flex-col  justify-center">
                     <label class="text-sm">Email</label>
                     <input wire:model='Email' autocomplete="off" type="email" class="p-1 border-2  w-full rounded-md bg-slate-50">
+                    @error('Email') <span class="text-xs text-rose-600">{{ $message }}</span>@enderror
                 </div>
+
 
                 <div class="flex flex-col justify-center">
                     <label class="text-sm">Phone Number</label>
                     <input wire:model='PhoneNumber' autocomplete="off" type="text" class="p-1 border-2  w-full rounded-md bg-slate-50">
+                    @error('PhoneNumber') <span class="text-xs text-rose-600">{{ $message }}</span>@enderror
                 </div>
+
 
                 <div class="flex flex-col justify-center">
                     <label class="text-sm">Country</label>
                     <input wire:model='Country' autocomplete="off" type="text" class="p-1 border-2  w-full rounded-md bg-slate-50">
+                    @error('Country') <span class="text-xs text-rose-600">{{ $message }}</span>@enderror
                 </div>
+
 
                 <div class="flex flex-col justify-center">
                     <label class="text-sm">Province</label>
                     <input wire:model='Province' autocomplete="off" type="text" class="p-1 border-2  w-full rounded-md bg-slate-50">
+                    @error('Province') <span class="text-xs text-rose-600">{{ $message }}</span>@enderror
                 </div>
+
 
                 <div class="flex flex-col justify-center">
                     <label class="text-sm">City</label>
                     <input wire:model='City' autocomplete="off" type="text" class="p-1 border-2  w-full rounded-md bg-slate-50">
+                    @error('City') <span class="text-xs text-rose-600">{{ $message }}</span>@enderror
                 </div>
+
 
                 <div class="flex flex-col justify-center">
                     <label class="text-sm">Street</label>
                     <input wire:model='Street' autocomplete="off" type="text" class="p-1 border-2  w-full rounded-md bg-slate-50">
+                    @error('Street') <span class="text-xs text-rose-600">{{ $message }}</span>@enderror
                 </div>
+
 
                 <div class="flex flex-col justify-center">
                     <label class="text-sm">Postcode</label>
                     <input wire:model='PostCode' autocomplete="off" type="text" class="p-1 border-2  w-full rounded-md bg-slate-50">
+                    @error('PostCode') <span class="text-xs text-rose-600">{{ $message }}</span>@enderror
                 </div>
+
             </div>
         </div>
 
@@ -69,14 +85,17 @@
                     <label class="text-sm">Order Date</label>
                     <input wire:model='OrderDate' autocomplete="off" type="date" class="p-1 border-2  w-full rounded-md bg-slate-50">
                 </div>
+                @error('OrderDate') <span class="text-xs text-rose-600">{{ $message }}</span>@enderror
 
                 <div class="mt-2">
                     <label  class="text-sm">Status</label>
-                    <select wire:model='OrderStatus' class="select text-sm rounded-md select-ghost-primary">
-                        <option value="0">Open</option>
-                        <option value="1">Paid</option>
+                    <select wire:model.defer='OrderStatus' class="select text-sm rounded-md select-ghost-primary">
+                        <option value="false" @if($OrderStatus == false) selected @endif>Open</option>
+                        <option value="true" @if($OrderStatus == true) selected @endif>Paid</option>
                     </select>
                 </div>
+                @error('OrderStatus') <span class="text-xs text-rose-600">{{ $message }}</span>@enderror
+
             </div>
         </div>
 
@@ -107,7 +126,7 @@
                         <td>
                             <div class="relative">
                                 <span class="absolute top-1.5 left-2">₱</span>
-                                <input  wire:model='products.{{ $index }}.SubTotal'  type="text"  class="border-2 px-6 py-1 w-full rounded-md">
+                                <input disabled wire:model='products.{{ $index }}.SubTotal'  type="text"  class="border-2 px-6 py-1 w-full rounded-md">
                             </div>
                         </td>
                     </tr>

@@ -20,7 +20,8 @@ class Customer extends Model
         'OrderStatus',
         'OrderSubtotal',
         'OrderShippingFee',
-        'OrderTotal'
+        'OrderTotal',
+        'AdditionalNotes'
     ];
 
     protected static function boot()
@@ -29,7 +30,7 @@ class Customer extends Model
 
         static::creating(function($model){
             do{
-                $random = strtoupper(Str::random(10));
+                $random = str_shuffle(strtoupper(Str::random(10)) . rand(1000, 9999));
                 $exists = self::where('OrderTrackNumber', $random)->exists();
             }while($exists);
             $model->OrderTrackNumber = $random;

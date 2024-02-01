@@ -11,6 +11,5 @@ class Order extends Model
         'Quantity',
         'Price',
         'SubTotal',
-        'AdditionalNotes'
     ];
 }

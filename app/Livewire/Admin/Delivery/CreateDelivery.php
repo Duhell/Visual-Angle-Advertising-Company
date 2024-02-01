@@ -2,9 +2,10 @@
 
 namespace App\Livewire\Admin\Delivery;
 
-use App\Models\Customer;
 use App\Models\Order;
 use Livewire\Component;
+use App\Models\Customer;
+use Livewire\Attributes\Rule;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Layout;
 
@@ -14,19 +15,28 @@ use Livewire\Attributes\Layout;
 class CreateDelivery extends Component
 {
     public $products = [];
+    #[Rule('required')]
     public string $FullName = "";
+    #[Rule('required')]
     public string $Email = "";
-
+    #[Rule('required')]
     public string $PhoneNumber = "";
+    #[Rule('required')]
     public string $Country = "";
+    #[Rule('required')]
     public string $Province = "";
+    #[Rule('required')]
     public string $City = "";
+    #[Rule('required')]
     public string $Street = "";
+    #[Rule('required')]
     public string $PostCode = "";
+    #[Rule('required')]
     public string $OrderDate = "";
+    #[Rule('required')]
     public bool $OrderStatus = false;
-
     public int $OrderSubtotal = 0;
+    #[Rule('required')]
     public int $OrderShippingFee = 0;
     public int $OrderTotal = 0;
 
@@ -48,6 +58,7 @@ class CreateDelivery extends Component
 
 
     public function SaveReceipt(){
+        $this->validate();
        if(empty($this->products)){
             session()->flash('error','No order has been set.');
             return;
@@ -69,44 +80,48 @@ class CreateDelivery extends Component
             ];
             $customer = new Customer;
             $customer->fill($customer_data);
+            $customer->AdditionalNotes = $this->AdditionalNotes;
             $customer->save();
 
-            $order = new Order;
-            $order->Customer_id = $customer->id;
             foreach($this->products as $product){
+                $order = new Order;
+                $order->Customer_id = $customer->id;
                 $order->fill($product);
+                $order->save();
             }
-            $order->save();
-
+            $this->reset();
             return session()->flash('success','Successfully created order receipt.');
 
        }
     }
 
-    public function updateSubTotal($index){
+ public function updateSubTotal($index){
 
-        if($this->products[$index]['Quantity'] !== "" && $this->products[$index]['Price'] !== "" ){
-            $this->products[$index]['SubTotal'] = $this->products[$index]['Quantity'] * $this->products[$index]['Price'];
-        }else if($this->products[$index]['Quantity'] === ""){
-            $this->products[$index]['Quantity'] = 0;
-            $this->products[$index]['SubTotal'] = $this->products[$index]['Quantity'] * $this->products[$index]['Price'];
-        }else if($this->products[$index]['Price'] === "" ){
-            $this->products[$index]['Price'] = 0;
-            $this->products[$index]['SubTotal'] = $this->products[$index]['Quantity'] * $this->products[$index]['Price'];
-        }
-
+    if($this->products[$index]['Quantity'] == "" || $this->products[$index]['Price'] == "" ){
+        $this->products[$index]['Quantity'] = 0;
+        $this->products[$index]['Price'] = 0;
+        $this->products[$index]['SubTotal'] = 0;
+        $this->OrderSubtotal = 0; // Reset OrderSubtotal
         foreach($this->products as $product){
             $this->OrderSubtotal += $product['SubTotal'];
         }
-
-        $this->updateTotal();
-
+    } else {
+        // Calculate subtotal
+        $this->products[$index]['SubTotal'] = $this->products[$index]['Quantity'] * $this->products[$index]['Price'];
+        // Update OrderSubtotal
+        $this->OrderSubtotal = 0; // Reset OrderSubtotal
+        foreach($this->products as $product){
+            $this->OrderSubtotal += $product['SubTotal'];
+        }
     }
+    $this->updateTotal();
+}
+
     public function updateTotal(){
         if(empty($this->OrderShippingFee)){
             $this->OrderShippingFee = 0;
         }else{
-            $this->OrderTotal = $this->OrderSubtotal - $this->OrderShippingFee;
+            $this->OrderTotal = $this->OrderSubtotal + $this->OrderShippingFee;
         }
     }
 

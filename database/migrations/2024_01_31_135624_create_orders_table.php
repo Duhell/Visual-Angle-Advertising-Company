@@ -20,7 +20,6 @@ return new class extends Migration
             $table->bigInteger('Quantity');
             $table->bigInteger('Price');
             $table->bigInteger('SubTotal');
-            $table->text('AdditionalNotes')->nullable();
             $table->timestamps();
         });
     }
