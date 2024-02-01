@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Ramsey\Uuid\Uuid;
 
 class Customer extends Model
@@ -24,6 +25,11 @@ class Customer extends Model
         'OrderTotal',
         'AdditionalNotes'
     ];
+
+    public function orders() : HasMany
+    {
+        return $this->hasMany(Order::class);
+    }
 
     protected static function boot()
     {

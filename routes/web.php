@@ -4,10 +4,11 @@ use App\Http\Controllers\AdminController;
 use App\Livewire\Admin\Dashboard;
 use App\Livewire\Admin\Auth\Login;
 use App\Livewire\Admin\Delivery\CreateDelivery;
+use App\Livewire\Admin\Delivery\ManageDeliveries;
 use App\Livewire\InquireComponent;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Livewire\Admin\Inquire\ManageInquiries;
+use Illuminate\Support\Facades\Route;
 
 
 //* Guest Routes
@@ -29,6 +30,7 @@ Route::prefix('admin')->group(function () {
 
         Route::prefix('delivery')->group(function(){
             Route::get('create-receipt',CreateDelivery::class)->name('admin_CreateReceipt');
+            Route::get('manage-deliveries',ManageDeliveries::class)->name('admin_ManageDeliveries');
         });
 
         Route::get('logout',[AdminController::class,'logout'])->name('admin_Logout');

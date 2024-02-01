@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Ramsey\Uuid\Uuid;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Order extends Model
 {
@@ -13,6 +14,11 @@ class Order extends Model
         'Price',
         'SubTotal',
     ];
+
+    public function customer() : BelongsTo
+    {
+        return $this->belongsTo(Customer::class);
+    }
 
     protected static function boot()
     {
