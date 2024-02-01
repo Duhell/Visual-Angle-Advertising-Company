@@ -33,7 +33,7 @@
 
                             <li>
 								<input type="checkbox" id="inquiryMenu" class="menu-toggle" />
-								<label class="menu-item justify-between" for="inquiryMenu">
+								<label class="menu-item justify-between {{ request()->routeIs('admin_ManageInquiries') ? "bg-slate-700 text-slate-100 hover:bg-slate-800":"" }}" for="inquiryMenu">
 									<div class="flex gap-2">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
                                             <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
@@ -48,11 +48,11 @@
 									</span>
 								</label>
 
-								<div class="menu-item-collapse">
+								<div class="menu-item-collapse ">
 									<div class="min-h-0">
-										<label class="menu-item menu-item-disabled ml-6">Inquiry Menu</label>
-										<label class="menu-item ml-6"><a href="#">Create Inquiry</a></label>
-										<label class="menu-item ml-6">Manage Inquiries</label>
+										<label class="menu-item menu-item-disabled ml-6 ">Inquiry Menu</label>
+										{{-- <label class="menu-item ml-6"><a href="#">Create Inquiry</a></label> --}}
+										<label class="menu-item ml-6 {{ request()->routeIs('admin_ManageInquiries') ? "text-sky-800":"" }}"><a wire:navigate href="{{ route('admin_ManageInquiries') }}">Manage Inquiries</a></label>
 									</div>
 								</div>
 							</li>

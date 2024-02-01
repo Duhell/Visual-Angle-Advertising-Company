@@ -7,7 +7,7 @@ use App\Livewire\Admin\Delivery\CreateDelivery;
 use App\Livewire\InquireComponent;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-
+use App\Livewire\Admin\Inquire\ManageInquiries;
 
 Route::get('/', HomeController::class)->name('home_page');
 Route::get('/about', HomeController::class)->name('about_page');
@@ -18,6 +18,11 @@ Route::prefix('admin')->group(function () {
 
     Route::middleware(['auth'])->group(function(){
         Route::get('dashboard',Dashboard::class)->name('admin_Dashboard');
+
+        Route::prefix('inquiry')->group(function(){
+            Route::get('manage-inquiries',ManageInquiries::class)->name('admin_ManageInquiries');
+        });
+
         Route::prefix('delivery')->group(function(){
             Route::get('create-receipt',CreateDelivery::class)->name('admin_CreateReceipt');
         });
