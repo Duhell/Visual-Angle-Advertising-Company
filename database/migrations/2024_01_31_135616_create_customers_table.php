@@ -3,7 +3,6 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Ramsey\Uuid\Uuid;
 
 return new class extends Migration
 {
@@ -14,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->id();
-            $table->uuid('Customer_uuid')->default(Uuid::uuid4());
+            $table->uuid('Customer_uuid');
             $table->string('FullName')->nullable();
             $table->string('Email')->nullable();
             $table->string('PhoneNumber')->nullable();

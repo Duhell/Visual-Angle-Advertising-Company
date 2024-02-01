@@ -22,11 +22,13 @@ class InquireComponent extends Component
     public string $Message;
 
 
+    //* Method for sending inquiry form
+    //Todo: Add error handling, like try and catch
     public function send()
     {
         $this->validate();
         Inquire::create($this->all());
-        session()->flash('success','Inquire Sent');
+        session()->flash('success','Sent: Your Inquiry Has Been Sent Successfully! ');
         $this->reset();
     }
     public function render()

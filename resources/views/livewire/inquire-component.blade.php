@@ -2,7 +2,7 @@
 	<div class="p-8 shadow-lg">
         <div class="mb-3">
             <h1 class="text-3xl font-bold">Send Inquire</h1>
-            <small class="italic font-light">Fields with <span class="text-red-400">*</span> are required.</small>
+            <small class="italic font-light">All fields are required.</small>
         </div>
         @if(session('success'))
         <div class="alert">

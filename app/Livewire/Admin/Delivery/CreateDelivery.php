@@ -14,6 +14,8 @@ use Livewire\Attributes\Layout;
 #[Layout('/livewire/layout/app')]
 class CreateDelivery extends Component
 {
+    //! Only validation, No exception catching...
+    //TODO: Add error handling like try and catch
     public $products = [];
     #[Rule('required')]
     public string $FullName = "";

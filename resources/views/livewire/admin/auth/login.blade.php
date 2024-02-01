@@ -50,11 +50,14 @@
                 @error('password') <span class="text-xs text-rose-400">{{ $message }}</span> @enderror
             </div>
 
-            <button wire:loading.disable type="submit"
-                class="block w-full disabled:bg-slate-400 disabled:cursor-not-allowed rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white">
+            <button wire:loading.attr='disabled' type="submit"
+                class="block mb-4 w-full disabled:bg-slate-400 disabled:cursor-not-allowed rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white">
                 <span wire:loading.remove>Login</span>
                 <span wire:loading>Loading ...</span>
             </button>
+            <div>
+                <a class="text-xs" wire:navigate href="/">Go to website</a>
+            </div>
         </form>
     </div>
 </div>

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
+use Ramsey\Uuid\Uuid;
 
 class Customer extends Model
 {
@@ -30,10 +31,16 @@ class Customer extends Model
 
         static::creating(function($model){
             do{
-                $random = str_shuffle(strtoupper(Str::random(10)) . rand(1000, 9999));
-                $exists = self::where('OrderTrackNumber', $random)->exists();
-            }while($exists);
-            $model->OrderTrackNumber = $random;
+                $randomTrackNumber = str_shuffle(strtoupper(Str::random(10)) . rand(1000, 9999));
+                $randomUuid = Uuid::uuid4();
+
+                $exists_TrackNumber = self::where('OrderTrackNumber', $randomTrackNumber)->exists();
+                $exists_randomUuid = self::where('Customer_uuid', $randomUuid)->exists();
+
+            }while($exists_TrackNumber || $exists_randomUuid);
+
+            $model->OrderTrackNumber = $randomTrackNumber;
+            $model->Customer_uuid = $randomUuid;
         });
     }
 }

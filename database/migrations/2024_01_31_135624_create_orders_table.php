@@ -3,7 +3,6 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Ramsey\Uuid\Uuid;
 
 return new class extends Migration
 {
@@ -14,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->uuid('Order_uuid')->default(Uuid::uuid4());
+            $table->uuid('Order_uuid');
             $table->foreignId('Customer_id')->references('id')->on('customers')->cascadeOnDelete();
             $table->string('Product');
             $table->bigInteger('Quantity');

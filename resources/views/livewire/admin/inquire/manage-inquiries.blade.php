@@ -3,9 +3,11 @@
         <h1 class="font-bold text-2xl">Manage Inquiries</h1>
         @include('livewire.admin.inquire.includes.search-box')
     </div>
-
+    {{-- Notification --}}
+    @include('success.success')
+    {{-- Notification --}}
     <div class="flex w-full mt-10 overflow-x-auto">
-        <table class="table-zebra table">
+        <table class="table-zebra table relative before:absolute before:h-1 before:w-full before:conten=[''] before:top-0 before:bg-slate-700">
             <thead>
                 <tr>
                     <th></th>
@@ -19,7 +21,11 @@
             </tbody>
         </table>
     </div>
-    <div class="w-full outline">
-        {{ $inquiries->links('pagination::tailwind') }}
+    <div class="w-full mt-6">
+        {{ $inquiries->links('pagination.tailwind-pagination') }}
+    </div>
+
+    <div>
+        @include('livewire.admin.inquire.includes.modal-inquire')
     </div>
 </section>
