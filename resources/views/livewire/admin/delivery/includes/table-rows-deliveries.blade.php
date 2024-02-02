@@ -1,23 +1,26 @@
 @forelse ( $customers as $index => $customer)
-    <tr wire:key='{{ $customer->customer_uuid }}'>
+    <tr wire:key='{{ $customer->Customer_uuid }}'>
         <th>{{ $loop->iteration  }}</th>
         <td>{{ $customer->FullName }}</td>
         <td>{{ $customer->Email  }}</td>
         <td>{{ $customer->OrderTrackNumber  }}</td>
         <td>
             @if ($customer->OrderStatus)
-                <span class="p-1 bg-emerald-500 text-slate-100 rounded-md text-xs">Paid</span>
+                <span wire:click='edit("{{ $customer->Customer_uuid  }}")' class="p-1 cursor-pointer  text-green-600 font-semibold rounded-md text-xs">Paid ⬆</span>
             @else
-                <span class="p-1 bg-rose-500 text-slate-100   rounded-md text-xs">Open</span>
+                <span wire:click='edit("{{ $customer->Customer_uuid  }}")' class="p-1 cursor-pointer  text-rose-600 font-semibold   rounded-md text-xs">Pending ⬇</span>
             @endif
         </td>
 
-        <td><label for="modal-inquire"  class="cursor-pointer p-1 w-20 justify-center bg-indigo-600 flex items-center gap-1  duration-200 rounded-md text-xs text-slate-100 hover:text-indigo-200">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 0 0-3.213-9.193 2.056 2.056 0 0 0-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 0 0-10.026 0 1.106 1.106 0 0 0-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12" />
-              </svg>
-              <span>Order</span>
-            </label>
+        <td>
+            <div class="dropdown ">
+                <label class="cursor-pointer btn bg-transparent p-0 mx-2" tabindex="0">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 12.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 18.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z" />
+                    </svg>
+                </label>
+                @include('livewire.admin.delivery.includes.actions-delivery')
+            </div>
         </td>
     </tr>
 @empty

@@ -28,7 +28,7 @@ class Customer extends Model
 
     public function orders() : HasMany
     {
-        return $this->hasMany(Order::class);
+        return $this->hasMany(Order::class,'Customer_id');
     }
 
     protected static function boot()
