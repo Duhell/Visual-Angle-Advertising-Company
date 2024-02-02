@@ -1,12 +1,12 @@
 <input class="modal-state" id="modal-delivery" type="checkbox" />
 <div class="modal w-screen">
 	{{-- <label class="modal-overlay" ></label> --}}
-	<div class="modal-content flex flex-col gap-5 w-full">
+	<div class="modal-content flex flex-col gap-5 w-full after:absolute after:left-0 after:w-full after:h-1 after:content-[''] after:bottom-0 after:bg-gray-700">
 		<label wire:click='cancelView' for="modal-delivery" class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</label>
         <div wire:loading class="skeleton w-24 h-4"></div>
         <span wire:loading.remove class="text-xs p-0 m-0 {{  $data['customer']->OrderStatus ?? "" ? "text-green-600 font-semibold" : "text-rose-700 font-semibold" }}">{{  $data['customer']->OrderStatus ?? "" ? "Paid" : "Pending" }}</span>
         <div class="flex justify-between mt-2 w-full items-center">
-            <h2 class="text-lg">View Receipt</h2>
+            <h2 class="text-lg">View Order</h2>
             <div wire:loading class="skeleton w-24 h-4"></div>
             <small wire:loading.remove class="text-slate-500">{{ $data['customer']->OrderTrackNumber ?? "" }}</small>
         </div>
@@ -59,9 +59,9 @@
                         @forelse ( $data['orders'] ?? [] as $order )
                         <tr>
                             <th>{{ $order->Product }}</th>
-                            <td>{{ $order->Quantity }}</td>
-                            <td>{{ $order->Price }}</td>
-                            <td>{{ $order->SubTotal  }}</td>
+                            <td> {{ $order->Quantity }}</td>
+                            <td>₱ {{ $order->Price }}</td>
+                            <td>₱ {{ $order->SubTotal  }}</td>
                         </tr>
                         @empty
                         <tr>

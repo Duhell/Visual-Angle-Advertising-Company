@@ -66,7 +66,7 @@
         </div>
 
         <div class=" bg-slate-50 shadow-md rounded-md">
-            <div class="p-4 bg-slate-700 rounded relative before:absolute before:left-0 before:w-full before:h-1 before:content=[''] before:top-0 before:bg-emerald-400">
+            <div class="p-4 bg-slate-700 rounded relative before:absolute before:left-0 before:w-full before:h-1 before:content-[''] before:top-0 before:bg-emerald-400">
                 <h1 class="text-lg text-slate-100">Order</h1>
             </div>
 
