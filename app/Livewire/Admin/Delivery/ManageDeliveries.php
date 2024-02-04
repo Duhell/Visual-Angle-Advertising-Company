@@ -8,18 +8,18 @@ use Barryvdh\DomPDF\Facade\Pdf;
 use Livewire\Component;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Layout;
+use Livewire\WithPagination;
 
 
 #[Title('Manage Deliveries')]
 #[Layout('/livewire/layout/app')]
 class ManageDeliveries extends Component
 {
+    use WithPagination;
     public string $search = "";
     public array $data = [];
     public string $customer____uuid = "";
-    public function mount(){
-        session(['deliveryURL' => url()->current()]);
-    }
+
     public function downloadPDF(string $customer_uuid = null){
         $customer = Customer::where('Customer_uuid',$customer_uuid)->first();
         $orders = Order::where('Customer_id',$customer->id)->get();

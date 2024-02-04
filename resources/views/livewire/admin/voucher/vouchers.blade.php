@@ -1,4 +1,4 @@
-<div>
+<section>
     <div class="flex justify-between items-center pr-5">
         <h1 class="text-2xl  font-bold">Vouchers</h1>
         <label for="create_voucher_modal" class="bg-blue-400 text-sm py-1.5 px-3 cursor-pointer rounded-md text-slate-100 border border-indigo-400 hover:bg-blue-600 duration-200 flex gap-2 items-center">
@@ -30,9 +30,8 @@
         {{ $vouchers->withPath(session('voucherURL'))->links('pagination.tailwind-pagination') }}
     </div>
 
-    {{-- Modal --}}
     <div>
         @include('livewire.admin.voucher.includes.modal-create-voucher')
     </div>
 
-</div>
+</section>

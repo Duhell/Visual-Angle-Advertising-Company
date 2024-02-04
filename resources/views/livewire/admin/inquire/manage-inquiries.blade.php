@@ -6,6 +6,7 @@
     {{-- Notification --}}
     @include('success.success')
     {{-- Notification --}}
+
     <div class="flex w-full mt-10 overflow-x-auto">
         <table class="table-zebra table relative before:absolute before:h-1 before:w-full before:conten=[''] before:top-0 before:bg-blue-500">
             <thead>

@@ -2,18 +2,19 @@
 
 namespace App\Livewire\Admin\Inquire;
 
+use Exception;
 use App\Models\Inquire;
 use Livewire\Component;
+use Livewire\WithPagination;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Layout;
-use Livewire\WithoutUrlPagination;
-use Livewire\WithPagination;
+use Illuminate\Support\Facades\Log;
 
 #[Title('Manage Inquiries')]
 #[Layout('/livewire/layout/app')]
 class ManageInquiries extends Component
 {
-    use WithPagination, WithoutUrlPagination;
+    use WithPagination;
 
     public string $search = "";
     public ?Inquire $selectedInquiry = null;
@@ -24,20 +25,38 @@ class ManageInquiries extends Component
 
     public function details(string $inquiry_uuid = null)
     {
-        $this->selectedInquiry = Inquire::where('inquire_uuid', $inquiry_uuid)->firstOrFail();
+        try{
+            $this->selectedInquiry = Inquire::where('inquire_uuid', $inquiry_uuid)->firstOrFail();
+        }catch(Exception $error){
+            session()->flash('error','No Details: Something went wrong.');
+            Log::error('Error @details method',[
+                'reason'=>$error->getMessage()
+            ]);
+        }
     }
 
     public function deleteInquiry(string $inquiry_uuid = null)
     {
-        $inquiry = Inquire::where('inquire_uuid', $inquiry_uuid)->firstOrFail();
-        $inquiry->delete();
-        session()->flash('success', 'Inquiry deleted.');
-        $this->resetInquiryModal();
+        try{
+            $inquiry = Inquire::where('inquire_uuid', $inquiry_uuid)->firstOrFail();
+            if($inquiry){
+                $inquiry->delete();
+                session()->flash('success', 'Inquiry: Delete successfully.');
+                $this->resetInquiryModal();
+            }else{
+                return session()->flash('error', 'Inquiry: Failed to delete.');
+            }
+        }catch(Exception $error){
+            session()->flash('notfound','No Details: Failed to delete.');
+            Log::error('Error @deleteInquiry method',[
+                'reason'=>$error->getMessage()
+            ]);
+        }
     }
 
     public function resetInquiryModal()
     {
-        $this->selectedInquiry = null;
+        return $this->selectedInquiry = null;
     }
 
     public function render()
