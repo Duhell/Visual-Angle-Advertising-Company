@@ -2,11 +2,14 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Ramsey\Uuid\Uuid;
 
 class Inquire extends Model
 {
+
+    use HasFactory;
     protected $fillable = [
         'FullName',
         'Email',

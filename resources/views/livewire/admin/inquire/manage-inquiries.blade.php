@@ -7,7 +7,7 @@
     @include('success.success')
     {{-- Notification --}}
     <div class="flex w-full mt-10 overflow-x-auto">
-        <table class="table-zebra table relative before:absolute before:h-1 before:w-full before:conten=[''] before:top-0 before:bg-slate-700">
+        <table class="table-zebra table relative before:absolute before:h-1 before:w-full before:conten=[''] before:top-0 before:bg-blue-500">
             <thead>
                 <tr>
                     <th></th>
@@ -22,7 +22,7 @@
         </table>
     </div>
     <div class="w-full mt-6">
-        {{ $inquiries->links('pagination.tailwind-pagination') }}
+        {{ $inquiries->withPath(session('inquireURL'))->links('pagination.tailwind-pagination') }}
     </div>
 
     <div>

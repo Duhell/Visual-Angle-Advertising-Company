@@ -8,6 +8,9 @@ use App\Livewire\Admin\Delivery\ManageDeliveries;
 use App\Livewire\InquireComponent;
 use App\Http\Controllers\HomeController;
 use App\Livewire\Admin\Inquire\ManageInquiries;
+use App\Livewire\Admin\Voucher\CreateVoucher;
+use App\Livewire\Admin\Voucher\ManageVouchers;
+use App\Livewire\Admin\Voucher\Vouchers;
 use Illuminate\Support\Facades\Route;
 
 
@@ -22,16 +25,19 @@ Route::prefix('admin')->group(function () {
     Route::get('login', Login::class)->name('login');
 
     Route::middleware(['auth'])->group(function(){
-        Route::get('dashboard',Dashboard::class)->name('admin_Dashboard');
+        Route::get('@dashboard',Dashboard::class)->name('admin_Dashboard');
 
         Route::prefix('inquiry')->group(function(){
-            Route::get('manage-inquiries',ManageInquiries::class)->name('admin_ManageInquiries');
+            Route::get('@manage-inquiries',ManageInquiries::class)->name('admin_ManageInquiries');
         });
 
         Route::prefix('delivery')->group(function(){
-            Route::get('create-receipt',CreateDelivery::class)->name('admin_CreateReceipt');
-            Route::get('manage-deliveries',ManageDeliveries::class)->name('admin_ManageDeliveries');
+            Route::get('@create-receipt',CreateDelivery::class)->name('admin_CreateReceipt');
+            Route::get('@manage-deliveries',ManageDeliveries::class)->name('admin_ManageDeliveries');
         });
+
+        Route::get('@vouchers',Vouchers::class)->name('admin_Vouchers');
+
 
         Route::get('logout',[AdminController::class,'logout'])->name('admin_Logout');
     });

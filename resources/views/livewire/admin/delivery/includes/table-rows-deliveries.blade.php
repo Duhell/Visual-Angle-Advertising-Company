@@ -25,6 +25,6 @@
     </tr>
 @empty
     <tr>
-        <td>No Deliveries</td>
+        <td colspan="12">No Deliveries</td>
     </tr>
 @endforelse

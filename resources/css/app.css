@@ -4,3 +4,22 @@
 *{
     font-family: 'Inter', sans-serif;
 }
+/* width */
+::-webkit-scrollbar {
+    width: 4px;
+  }
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #faf9f9;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #225bfe;
+  }
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #0c49ee;
+}

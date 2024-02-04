@@ -2,7 +2,9 @@
 
 namespace App\Livewire\Admin\Auth;
 
+use Exception;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Rule;
 use Livewire\Attributes\Title;
@@ -23,11 +25,20 @@ class Login extends Component
     {
         $this->validate();
 
-       if(Auth::attempt(['email'=> $this->email,'password'=>$this->password])){
-            $this->reset();
-            return $this->redirect('dashboard',navigate:true);
-        }else{
-            return session()->flash('error','Wrong email or password.');
+        try{
+            if (Auth::attempt(['email' => $this->email, 'password' => $this->password])) {
+                $this->reset();
+                return $this->redirect('@dashboard', navigate: true);
+            } else {
+                return session()->flash('error', 'Wrong email or password.');
+            }
+        }catch(Exception $error){
+            Log::error('Not Connected To Database.',[
+                'file'=>$error->getFile(),
+                'code'=>$error->getCode(),
+                'msg'=>$error->getMessage()
+            ]);
+            return session()->flash('error', 'Something went wrong.');
         }
 
     }

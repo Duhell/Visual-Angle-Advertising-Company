@@ -3,7 +3,7 @@
     @include('success.success')
     <form wire:submit.prevent='SaveReceipt' class="mt-14 gap-7 grid grid-cols-3">
         <div class=" bg-slate-50 col-span-2 shadow-md rounded-md">
-            <div class="p-4 bg-slate-700 rounded relative before:absolute before:left-0 before:w-full before:h-1 before:content=[''] before:top-0 before:bg-emerald-400">
+            <div class="p-4 bg-slate-700 rounded relative before:absolute before:left-0 before:w-full before:h-1 before:content=[''] before:top-0 before:bg-blue-500">
                 <h1 class="text-lg text-slate-100">Customer Information</h1>
             </div>
             <div class="p-4 grid grid-cols-3 gap-3">
@@ -66,7 +66,7 @@
         </div>
 
         <div class=" bg-slate-50 shadow-md rounded-md">
-            <div class="p-4 bg-slate-700 rounded relative before:absolute before:left-0 before:w-full before:h-1 before:content-[''] before:top-0 before:bg-emerald-400">
+            <div class="p-4 bg-slate-700 rounded relative before:absolute before:left-0 before:w-full before:h-1 before:content-[''] before:top-0 before:bg-blue-500">
                 <h1 class="text-lg text-slate-100">Order</h1>
             </div>
 
@@ -94,7 +94,7 @@
             <table class="table relative before:absolute before:h-1 before:w-full before:conten=[''] before:top-0 before:bg-slate-700">
                 <thead>
                     <tr >
-                        <th class="w-8"><button wire:click='add_product' type="button" class="bg-emerald-500 hover:bg-emerald-700 duration-300 p-1 w-8 text-white rounded">+</button></th>
+                        <th class="w-8"><button wire:click='add_product' type="button" class="bg-blue-500 hover:bg-blue-700 duration-300 p-1 w-8 text-white rounded">+</button></th>
                         <th>Product</th>
                         <th>Quantity</th>
                         <th>Price</th>
@@ -106,7 +106,7 @@
                     <tr wire:key='{{ $product['Product'] }}'>
                         <th><button wire:click='remove_product({{ $index }})' type="button" class="bg-rose-500 hover:bg-red-800 duration-300 p-1 w-8 text-white rounded">-</button></th>
                         <td ><input wire:model='products.{{ $index }}.Product' type="text" class="border-2 p-1 focus:outline-sky-700 w-full rounded-md"></td>
-                        <td><input wire:model='products.{{ $index }}.Quantity' type="number" min="0" class="border-2 p-1 w-full rounded-md"></td>
+                        <td><input wire:input.live.debounce.1000ms='updateSubTotal({{ $index }})' wire:model='products.{{ $index }}.Quantity' type="number" min="0" class="border-2 p-1 w-full rounded-md"></td>
                         <td>
                             <div class="relative">
                                 <span class="absolute top-1.5 left-2">₱</span>
@@ -139,7 +139,16 @@
         </div>
 
         <div>
-            <label class="block text-sm font-medium border-b-2 pb-2 text-gray-700"> Computation </label>
+            <div class="flex justify-between">
+                <label class="block text-sm font-medium border-b-2 pb-2 text-gray-700"> Computation </label>
+                <label  wire:click='open_vouchers' class="text-xs cursor-pointer text-blue-700 " for="listVouchers">
+                    @if(isset($selectedVoucherDiscount))
+                        <span>{{ $selectedVoucherDiscount['Code'] }}</span>
+                    @else
+                        <span>Apply Voucher</span>
+                    @endif
+                </label>
+            </div>
             <div class="text-sm grid grid-cols-1 gap-1 mt-4">
                 <div class="flex justify-between items-center">
                     <label >Subtotal</label>
@@ -162,10 +171,11 @@
         </div>
 
         <div class="col-span-full">
-            <button class="bg-slate-700 hover:bg-slate-900 duration-300 text-slate-200 font-bold rounded-md py-3 w-full" type="submit">
-                <span wire:loading.remove>Create Receipt</span>
-                <span wire:loading>Creating...</span>
+            <button class="bg-blue-600 hover:bg-blue-800 duration-300 text-slate-200 font-bold rounded-md py-3 w-full" type="submit">
+                <span wire:target='SaveReceipt' wire:loading.remove>Create Receipt</span>
+                <span wire:target='SaveReceipt' wire:loading>Creating...</span>
             </button>
         </div>
+        @include('livewire.admin.delivery.includes.modal-apply-vouchers')
     </form>
 </section>

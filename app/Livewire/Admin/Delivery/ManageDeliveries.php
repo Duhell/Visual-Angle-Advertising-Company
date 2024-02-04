@@ -17,6 +17,9 @@ class ManageDeliveries extends Component
     public string $search = "";
     public array $data = [];
     public string $customer____uuid = "";
+    public function mount(){
+        session(['deliveryURL' => url()->current()]);
+    }
     public function downloadPDF(string $customer_uuid = null){
         $customer = Customer::where('Customer_uuid',$customer_uuid)->first();
         $orders = Order::where('Customer_id',$customer->id)->get();
@@ -45,8 +48,6 @@ class ManageDeliveries extends Component
         $customer = Customer::where('Customer_uuid',$customer_uuid)->first();
         $orders = Order::where('Customer_id',$customer->id)->get();
 
-        //! Remove sleep later, for testing purpose
-        sleep(3);
         return $this->data = [
                     'customer' => $customer,
                     'orders' => $orders

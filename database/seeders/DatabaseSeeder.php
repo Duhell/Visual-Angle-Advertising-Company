@@ -20,5 +20,10 @@ class DatabaseSeeder extends Seeder
              'email' => 'visual@example.com',
              'password' => Hash::make('Visual2024'),
         ]);
+
+        \App\Models\Customer::factory(500)->create();
+        \App\Models\Inquire::factory(500)->create();
+        \App\Models\Order::factory(500)->create();
+        \App\Models\Voucher::factory(500)->create();
     }
 }
