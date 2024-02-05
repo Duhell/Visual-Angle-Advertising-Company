@@ -34,9 +34,7 @@ class Login extends Component
             }
         }catch(Exception $error){
             Log::error('Not Connected To Database.',[
-                'file'=>$error->getFile(),
-                'code'=>$error->getCode(),
-                'msg'=>$error->getMessage()
+                'reason'=>$error->getMessage()
             ]);
             return session()->flash('error', 'Something went wrong.');
         }

@@ -1,17 +1,15 @@
 <?php
 
-use App\Http\Controllers\AdminController;
-use App\Livewire\Admin\Dashboard;
 use App\Livewire\Admin\Auth\Login;
-use App\Livewire\Admin\Delivery\CreateDelivery;
-use App\Livewire\Admin\Delivery\ManageDeliveries;
 use App\Livewire\InquireComponent;
-use App\Http\Controllers\HomeController;
-use App\Livewire\Admin\Inquire\ManageInquiries;
-use App\Livewire\Admin\Voucher\CreateVoucher;
-use App\Livewire\Admin\Voucher\ManageVouchers;
-use App\Livewire\Admin\Voucher\Vouchers;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Livewire\Admin\Voucher\Vouchers;
+use App\Http\Controllers\AdminController;
+use App\Livewire\Admin\Dashboard\Dashboard;
+use App\Livewire\Admin\Delivery\CreateDelivery;
+use App\Livewire\Admin\Inquire\ManageInquiries;
+use App\Livewire\Admin\Delivery\ManageDeliveries;
 
 
 //* Guest Routes
