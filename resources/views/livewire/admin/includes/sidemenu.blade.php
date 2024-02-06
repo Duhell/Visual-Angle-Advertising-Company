@@ -20,7 +20,7 @@
 					<section class="menu-section px-4">
 						<span class="menu-title">Main menu</span>
 						<ul class="menu-items">
-                            {{-- @persist('menu') --}}
+
 							<li class="menu-item {{ request()->routeIs('admin_Dashboard') ? "bg-blue-500 text-slate-100 hover:bg-blue-700":"" }}">
                                 <a wire:navigate href="{{ route('admin_Dashboard') }}" class="w-full flex gap-2">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 opacity-75" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -37,6 +37,15 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
                                     </svg>
                                     <span>Inquiry</span>
+                                </a>
+							</li>
+
+                            <li class="menu-item {{ request()->routeIs('admin_Vouchers') ? "bg-blue-500 text-slate-100 hover:bg-blue-700":"" }}">
+                                <a wire:navigate href="{{ route('admin_Vouchers') }}" class="w-full flex gap-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 6v.75m0 3v.75m0 3v.75m0 3V18m-9-5.25h5.25M7.5 15h3M3.375 5.25c-.621 0-1.125.504-1.125 1.125v3.026a2.999 2.999 0 0 1 0 5.198v3.026c0 .621.504 1.125 1.125 1.125h17.25c.621 0 1.125-.504 1.125-1.125v-3.026a2.999 2.999 0 0 1 0-5.198V6.375c0-.621-.504-1.125-1.125-1.125H3.375Z" />
+                                    </svg>
+                                    <span>Voucher</span>
                                 </a>
 							</li>
 
@@ -66,38 +75,23 @@
 								</div>
 							</li>
 
-                            <li class="menu-item {{ request()->routeIs('admin_Vouchers') ? "bg-blue-500 text-slate-100 hover:bg-blue-700":"" }}">
-                                <a wire:navigate href="{{ route('admin_Vouchers') }}" class="w-full flex gap-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 6v.75m0 3v.75m0 3v.75m0 3V18m-9-5.25h5.25M7.5 15h3M3.375 5.25c-.621 0-1.125.504-1.125 1.125v3.026a2.999 2.999 0 0 1 0 5.198v3.026c0 .621.504 1.125 1.125 1.125h17.25c.621 0 1.125-.504 1.125-1.125v-3.026a2.999 2.999 0 0 1 0-5.198V6.375c0-.621-.504-1.125-1.125-1.125H3.375Z" />
-                                    </svg>
-                                    <span>Voucher</span>
-                                </a>
-							</li>
 
-                            {{-- @endpersist() --}}
 						</ul>
 					</section>
-					<div class="divider my-0"></div>
 				</nav>
 			</section>
 			<section class="sidebar-footer justify-end bg-gray-2 pt-2">
 				<div class="divider my-0"></div>
 				<div class="dropdown z-50 flex h-fit w-full cursor-pointer hover:bg-gray-4">
-					<label class="whites mx-2 flex h-fit w-full cursor-pointer p-0 hover:bg-gray-4" tabindex="0">
-						<div class="flex flex-row gap-4 p-4">
-							{{-- <div class="avatar-square avatar avatar-md">
-								<img src="https://i.pravatar.cc/150?img=30" alt="avatar" />
-							</div> --}}
-							<div class="flex flex-col">
-								<span>{{ Auth::user()->name }}</span>
-							</div>
-						</div>
+					<label class="whites mx-2 flex h-fit w-full cursor-pointer p-1.5 rounded-md hover:bg-blue-500 hover:text-slate-100" tabindex="0">
+                        <div class="flex gap-2 items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15m-3 0-3-3m0 0 3-3m-3 3H15" />
+                              </svg>
+
+                            <a tabindex="-1" href="{{ route('admin_Logout') }}" class=" text-sm">Logout</a>
+                        </div>
 					</label>
-					<div class="dropdown-menu-right-top dropdown-menu ml-2">
-						<a class="dropdown-item text-sm">Account settings</a>
-						<a tabindex="-1" href="{{ route('admin_Logout') }}" class="dropdown-item text-sm">Logout</a>
-					</div>
 				</div>
 			</section>
 		</aside>
