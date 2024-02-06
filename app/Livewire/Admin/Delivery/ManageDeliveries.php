@@ -28,6 +28,7 @@ class ManageDeliveries extends Component
             'customer' => $customer,
             'orders' => $orders
         ]);
+        \App\Models\Log::newLog('Receipt Download', $customer->OrderTrackNumber);
 
         return response()->streamDownload(function () use ($pdf) {
             echo $pdf->output();
@@ -40,6 +41,7 @@ class ManageDeliveries extends Component
             $customer->OrderStatus = !$customer->OrderStatus;
             $customer->save();
             session()->flash('success',$customer->FullName.": ".'Order Status updated.');
+            \App\Models\Log::newLog('Order Update', $customer->OrderTrackNumber);
         }
     }
 
@@ -47,7 +49,6 @@ class ManageDeliveries extends Component
     public function view(string $customer_uuid = null){
         $customer = Customer::where('Customer_uuid',$customer_uuid)->first();
         $orders = Order::where('Customer_id',$customer->id)->get();
-
         return $this->data = [
                     'customer' => $customer,
                     'orders' => $orders
@@ -61,6 +62,7 @@ class ManageDeliveries extends Component
     public function delete(string $customer_uuid = null){
         Customer::where('Customer_uuid',$customer_uuid)->first()->delete();
         session()->flash('success','Customer: Successfully deleted.');
+        \App\Models\Log::newLog('Delete', 'Customer delete successfully.');
     }
 
     public function render()

@@ -36,7 +36,8 @@ class Vouchers extends Component
 
         try{
             $voucher->save();
-            session()->flash('success','Successfully created voucher.');
+            session()->flash('success_voucher','Successfully created voucher.');
+            \App\Models\Log::newLog('Voucher Created', $voucher->Voucher_Name);
             $this->resetVoucherForm();
         }catch(Exception $error){
             session()->flash('error','Failed to create a new voucher.');
@@ -56,6 +57,7 @@ class Vouchers extends Component
         try{
             Voucher::where('Voucher_Code',$voucherCode)->firstOrFail()->delete();
             session()->flash('success','Voucher: Delete successfully.');
+            \App\Models\Log::newLog('Delete', "Voucher deleted successfully.");
         }catch(Exception $error){
             session()->flash('error','Voucher: Failed to delete.');
             Log::error('Error @deleteVoucher function',[
@@ -67,7 +69,7 @@ class Vouchers extends Component
     public function render()
     {
         return view('livewire.admin.voucher.vouchers',[
-            'vouchers'=>Voucher::latest()->paginate(5)
+            'vouchers'=>Voucher::where('isExpired',false)->latest()->paginate(5)
         ]);
     }
 }

@@ -2,6 +2,9 @@
 
 namespace App\Livewire\Admin\Dashboard;
 
+use App\Models\Log;
+use App\Models\Inquire;
+use App\Models\Voucher;
 use Livewire\Component;
 use App\Models\Customer;
 use Livewire\Attributes\Title;
@@ -13,9 +16,13 @@ use Illuminate\Support\Facades\DB;
 class Dashboard extends Component
 {
     public $data_deliveries;
+    public $currentInquiries;
+    public $previousInquiries;
     public $currentMonthDeliveries;
     public $previousMonthDeliveries;
-
+    public $nextVoucherToExpire;
+    public $recentlyExpiredVoucher;
+    public $logs;
 
     public function mount(){
         $monthsAgo = now()->subMonths(4);
@@ -23,6 +30,17 @@ class Dashboard extends Component
         $currentMonth = now()->month;
         $previousMonth = now()->subMonth()->month;
 
+        $this->displayNumberOfDelivies($monthsAgo,$currentYear,$currentMonth,$previousMonth);
+        $this->displayNumberOfInquiries($currentYear,$currentMonth,$previousMonth);
+        $this->displayExpiredVoucher();
+
+        // LOGS
+        $this->logs = Log::latest()->limit(15)->get();
+
+
+    }
+
+    private function displayNumberOfDelivies($monthsAgo,$currentYear,$currentMonth,$previousMonth){
         $this->data_deliveries = Customer::select(DB::raw('count(id) as `data`'), DB::raw("DATE_FORMAT(OrderDate, '%m') as month"))
         ->where('OrderDate', '>=', $monthsAgo)
         ->groupBy('month')
@@ -41,6 +59,40 @@ class Dashboard extends Component
         ->whereMonth('OrderDate', $previousMonth)
         ->count();
     }
+
+    private function displayNumberOfInquiries($currentYear,$currentMonth,$previousMonth){
+        $this->currentInquiries = Inquire::whereYear('created_at', $currentYear)
+        ->whereMonth('created_at', $currentMonth)
+        ->count();
+
+        $this->previousInquiries = Inquire::whereYear('created_at', $currentYear)
+        ->whereMonth('created_at', $previousMonth)
+        ->count();
+    }
+
+    private function displayExpiredVoucher()
+    {
+        // Get current datetime
+        $now = now();
+
+        $this->recentlyExpiredVoucher = Voucher::where('Voucher_Expiry', '<=', $now)
+                                     ->where('isExpired', false)
+                                     ->orderBy('Voucher_Expiry', 'desc')
+                                     ->first();
+
+        if ($this->recentlyExpiredVoucher) {
+            $this->recentlyExpiredVoucher->isExpired = true;
+            $this->recentlyExpiredVoucher->save();
+        }
+
+
+        // Find the next voucher to expire
+        $this->nextVoucherToExpire = Voucher::where('Voucher_Expiry', '>', $now)
+            ->where('isExpired', false)
+            ->orderBy('Voucher_Expiry', 'asc')
+            ->first();
+    }
+
 
     public function render()
     {

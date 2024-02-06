@@ -20,7 +20,7 @@
     @include('includes.nav')
     <main class="container mt-24 mx-auto">
         {{-- If there is livewire component --}}
-        {{ $slot ?? "" }}
+        {{ $slot ?? ""}}
         {{-- If there is livewire component --}}
 
         {{-- Normal Blade Files --}}

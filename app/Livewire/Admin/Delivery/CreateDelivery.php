@@ -9,6 +9,7 @@ use App\Models\Voucher;
 use Livewire\Attributes\Rule;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Layout;
+use App\Models\Log;
 
 
 #[Title('Create Delivery Receipt')]
@@ -62,7 +63,7 @@ class CreateDelivery extends Component
     }
 
     public function open_vouchers(){
-        $this->vouchers = Voucher::latest()->get();
+        $this->vouchers = Voucher::where('isExpired',false)->latest()->get();
         $this->selectedVoucherDiscount = null;
         $this->updateTotal();
     }
@@ -97,7 +98,9 @@ class CreateDelivery extends Component
                 'OrderSubtotal' => $this->OrderSubtotal,
                 'OrderShippingFee' => $this->OrderShippingFee,
                 'OrderTotal' => $this->OrderTotal,
+                'OrderVoucher'=>$this->selectedVoucherDiscount['Code'] ?? null
             ];
+
             $customer = new Customer;
             $customer->fill($customer_data);
             $customer->AdditionalNotes = $this->AdditionalNotes;
@@ -110,6 +113,7 @@ class CreateDelivery extends Component
                 $order->save();
             }
             $this->reset();
+            Log::newLog('Order Created', $customer->OrderTrackNumber);
             return session()->flash('success','Successfully created order receipt.');
 
        }

@@ -11,13 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('vouchers', function (Blueprint $table) {
+        Schema::create('logs', function (Blueprint $table) {
             $table->id();
-            $table->string('Voucher_Code');
-            $table->string('Voucher_Name');
-            $table->string('Voucher_Value')->default(0);
-            $table->dateTime('Voucher_Expiry');
-            $table->boolean('isExpired')->default(false);
+            $table->string('type');
+            $table->string('log');
             $table->timestamps();
         });
     }
@@ -27,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('vouchers');
+        Schema::dropIfExists('logs');
     }
 };

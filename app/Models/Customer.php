@@ -25,6 +25,7 @@ class Customer extends Model
         'OrderSubtotal',
         'OrderShippingFee',
         'OrderTotal',
+        'OrderVoucher',
         'AdditionalNotes'
     ];
 

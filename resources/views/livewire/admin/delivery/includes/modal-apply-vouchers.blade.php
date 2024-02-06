@@ -22,7 +22,7 @@
                         <tr  wire:key='{{ $voucher->Voucher_Code }}'>
                             <th style="font-size: 12px;">{{ $voucher->Voucher_Code }}</th>
                             <td style="font-size: 12px;">{{ $voucher->Voucher_Name }}</td>
-                            <td style="font-size: 12px;"><label for="listVouchers" wire:click='select_voucher("{{$voucher->Voucher_Code   }}")' class="px-2 py-1.5 rounded-md bg-blue-500 text-slate-100 border border-blue-700">Select</label></td>
+                            <td style="font-size: 12px;"><label for="listVouchers" wire:click='select_voucher("{{$voucher->Voucher_Code   }}")' class="px-2 py-1.5 cursor-pointer rounded-md bg-blue-500 text-slate-100 border hover:bg-blue-600 border-blue-700">Select</label></td>
                         </tr>
                     @empty
                         <p>No Avaliable Vouchers</p>

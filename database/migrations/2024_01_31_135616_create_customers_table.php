@@ -28,6 +28,7 @@ return new class extends Migration
             $table->bigInteger('OrderShippingFee')->nullable();
             $table->bigInteger('OrderTotal')->nullable();
             $table->string('OrderTrackNumber')->nullable();
+            $table->string('OrderVoucher')->nullable();
             $table->text('AdditionalNotes')->nullable();
             $table->timestamps();
         });

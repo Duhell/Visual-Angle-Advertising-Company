@@ -28,6 +28,7 @@ class Login extends Component
         try{
             if (Auth::attempt(['email' => $this->email, 'password' => $this->password])) {
                 $this->reset();
+                \App\Models\Log::newLog('Login', Auth::user()->name.' logged in');
                 return $this->redirect('@dashboard', navigate: true);
             } else {
                 return session()->flash('error', 'Wrong email or password.');

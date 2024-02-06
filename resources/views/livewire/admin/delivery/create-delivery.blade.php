@@ -9,56 +9,56 @@
             <div class="p-4 grid grid-cols-3 gap-3">
                 <div class="flex flex-col col-span-2 justify-center">
                     <label class="text-sm">Full Name</label>
-                    <input wire:model='FullName' autocomplete="off" type="text" class="p-1 border-2 w-full rounded-md bg-slate-50">
+                    <input wire:model='FullName' autocomplete="off" type="text" class="p-1 border-2 focus:outline-blue-400 w-full rounded-md bg-slate-50">
                     @error('FullName') <span class="text-xs text-rose-600">{{ $message }}</span>@enderror
                 </div>
 
 
                 <div class="flex flex-col  justify-center">
                     <label class="text-sm">Email</label>
-                    <input wire:model='Email' autocomplete="off" type="email" class="p-1 border-2  w-full rounded-md bg-slate-50">
+                    <input wire:model='Email' autocomplete="off" type="email" class="p-1 border-2 focus:outline-blue-400  w-full rounded-md bg-slate-50">
                     @error('Email') <span class="text-xs text-rose-600">{{ $message }}</span>@enderror
                 </div>
 
 
                 <div class="flex flex-col justify-center">
                     <label class="text-sm">Phone Number</label>
-                    <input wire:model='PhoneNumber' autocomplete="off" type="text" class="p-1 border-2  w-full rounded-md bg-slate-50">
+                    <input wire:model='PhoneNumber' autocomplete="off" type="text" class="p-1 border-2 focus:outline-blue-400  w-full rounded-md bg-slate-50">
                     @error('PhoneNumber') <span class="text-xs text-rose-600">{{ $message }}</span>@enderror
                 </div>
 
 
                 <div class="flex flex-col justify-center">
                     <label class="text-sm">Country</label>
-                    <input wire:model='Country' autocomplete="off" type="text" class="p-1 border-2  w-full rounded-md bg-slate-50">
+                    <input wire:model='Country' autocomplete="off" type="text" class="p-1 border-2 focus:outline-blue-400  w-full rounded-md bg-slate-50">
                     @error('Country') <span class="text-xs text-rose-600">{{ $message }}</span>@enderror
                 </div>
 
 
                 <div class="flex flex-col justify-center">
                     <label class="text-sm">Province</label>
-                    <input wire:model='Province' autocomplete="off" type="text" class="p-1 border-2  w-full rounded-md bg-slate-50">
+                    <input wire:model='Province' autocomplete="off" type="text" class="p-1 border-2 focus:outline-blue-400  w-full rounded-md bg-slate-50">
                     @error('Province') <span class="text-xs text-rose-600">{{ $message }}</span>@enderror
                 </div>
 
 
                 <div class="flex flex-col justify-center">
                     <label class="text-sm">City</label>
-                    <input wire:model='City' autocomplete="off" type="text" class="p-1 border-2  w-full rounded-md bg-slate-50">
+                    <input wire:model='City' autocomplete="off" type="text" class="p-1 border-2 focus:outline-blue-400  w-full rounded-md bg-slate-50">
                     @error('City') <span class="text-xs text-rose-600">{{ $message }}</span>@enderror
                 </div>
 
 
                 <div class="flex flex-col justify-center">
                     <label class="text-sm">Street</label>
-                    <input wire:model='Street' autocomplete="off" type="text" class="p-1 border-2  w-full rounded-md bg-slate-50">
+                    <input wire:model='Street' autocomplete="off" type="text" class="p-1 border-2 focus:outline-blue-400  w-full rounded-md bg-slate-50">
                     @error('Street') <span class="text-xs text-rose-600">{{ $message }}</span>@enderror
                 </div>
 
 
                 <div class="flex flex-col justify-center">
                     <label class="text-sm">Postcode</label>
-                    <input wire:model='PostCode' autocomplete="off" type="text" class="p-1 border-2  w-full rounded-md bg-slate-50">
+                    <input wire:model='PostCode' autocomplete="off" type="text" class="p-1 border-2 focus:outline-blue-400  w-full rounded-md bg-slate-50">
                     @error('PostCode') <span class="text-xs text-rose-600">{{ $message }}</span>@enderror
                 </div>
 
@@ -73,7 +73,7 @@
             <div class="p-4">
                 <div>
                     <label class="text-sm">Order Date</label>
-                    <input wire:model='OrderDate' autocomplete="off" type="date" class="p-1 border-2  w-full rounded-md bg-slate-50">
+                    <input wire:model='OrderDate' autocomplete="off" type="date" class="p-1 border-2 focus:outline-blue-400  w-full rounded-md bg-slate-50">
                 </div>
                 @error('OrderDate') <span class="text-xs text-rose-600">{{ $message }}</span>@enderror
 
@@ -105,18 +105,18 @@
                     @forelse ($products as $index => $product )
                     <tr wire:key='{{ $product['Product'] }}'>
                         <th><button wire:click='remove_product({{ $index }})' type="button" class="bg-rose-500 hover:bg-red-800 duration-300 p-1 w-8 text-white rounded">-</button></th>
-                        <td ><input wire:model='products.{{ $index }}.Product' type="text" class="border-2 p-1 focus:outline-sky-700 w-full rounded-md"></td>
-                        <td><input wire:input.live.debounce.1000ms='updateSubTotal({{ $index }})' wire:model='products.{{ $index }}.Quantity' type="number" min="0" class="border-2 p-1 w-full rounded-md"></td>
+                        <td ><input wire:model='products.{{ $index }}.Product' type="text" class="border-2 p-1 focus:outline-blue-400 w-full rounded-md"></td>
+                        <td><input wire:input.live.debounce.1000ms='updateSubTotal({{ $index }})' wire:model='products.{{ $index }}.Quantity' type="number" min="0" class="border-2 focus:outline-blue-400 p-1 w-full rounded-md"></td>
                         <td>
                             <div class="relative">
                                 <span class="absolute top-1.5 left-2">₱</span>
-                                <input wire:input.live.debounce.1000ms='updateSubTotal({{ $index }})' wire:model='products.{{ $index }}.Price' type="number" min="0" class="border-2 px-6 py-1 w-full rounded-md">
+                                <input wire:input.live.debounce.1000ms='updateSubTotal({{ $index }})' wire:model='products.{{ $index }}.Price' type="number" min="0" class="border-2 focus:outline-blue-400 px-6 py-1 w-full rounded-md">
                             </div>
                         </td>
                         <td>
                             <div class="relative">
                                 <span class="absolute top-1.5 left-2">₱</span>
-                                <input disabled wire:model='products.{{ $index }}.SubTotal'  type="text"  class="border-2 px-6 py-1 w-full rounded-md">
+                                <input disabled wire:model='products.{{ $index }}.SubTotal'  type="text"  class="border-2 focus:outline-blue-400 px-6 py-1 w-full rounded-md">
                             </div>
                         </td>
                     </tr>
@@ -134,7 +134,7 @@
         </div>
         <div class="col-span-2">
             <label for="OrderNotes" class="block text-sm font-medium text-gray-700"> Order notes </label>
-            <textarea wire:model='AdditionalNotes' id="OrderNotes" class="mt-2 p-2 w-full border-2 rounded-lg border-gray-200 align-top shadow-sm sm:text-sm" rows="4"
+            <textarea wire:model='AdditionalNotes' id="OrderNotes" class="mt-2 focus:outline-blue-400 p-2 w-full border-2 rounded-lg border-gray-200 align-top shadow-sm sm:text-sm" rows="4"
                 placeholder="Enter any additional order notes..."></textarea>
         </div>
 

@@ -16,14 +16,14 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
 
         \App\Models\User::factory()->create([
-             'name' => 'Admin Visula',
+             'name' => 'Admin Visual',
              'email' => 'visual@example.com',
              'password' => Hash::make('Visual2024'),
         ]);
 
-        \App\Models\Customer::factory(500)->create();
-        \App\Models\Inquire::factory(500)->create();
-        \App\Models\Order::factory(500)->create();
-        \App\Models\Voucher::factory(500)->create();
+        //\App\Models\Customer::factory(500)->create();
+        //\App\Models\Inquire::factory(500)->create();
+        //\App\Models\Order::factory(500)->create();
+        //\App\Models\Voucher::factory(500)->create();
     }
 }

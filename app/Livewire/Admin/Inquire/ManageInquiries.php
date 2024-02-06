@@ -42,6 +42,7 @@ class ManageInquiries extends Component
             if($inquiry){
                 $inquiry->delete();
                 session()->flash('success', 'Inquiry: Delete successfully.');
+                \App\Models\Log::newLog('Delete', "Inquire delete successfully.");
                 $this->resetInquiryModal();
             }else{
                 return session()->flash('error', 'Inquiry: Failed to delete.');
