@@ -1,6 +1,6 @@
 <div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
     <div class="mx-auto max-w-lg">
-        <h1 class="text-center text-2xl font-bold text-zinc-600 dark:text-slate-200 sm:text-3xl">Welcome Admin</h1>
+        <h1 class="text-center text-2xl font-bold text-zinc-600 dark:text-slate-200 sm:text-3xl">Visual Angle Advertising Company</h1>
         <p class="text-center text-lg font-medium">Sign in to your account</p>
         <form wire:submit.prevent='login' class="mb-0 mt-6 space-y-4 rounded-lg p-4 shadow-lg border sm:p-6 lg:p-8">
             @if (session('error'))

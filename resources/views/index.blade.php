@@ -18,10 +18,7 @@
 </head>
 <body>
     @include('includes.nav')
-    <main class="container mt-24 mx-auto">
-        {{-- If there is livewire component --}}
-        {{ $slot ?? ""}}
-        {{-- If there is livewire component --}}
+    <main class="mt-24 mx-auto">
 
         {{-- Normal Blade Files --}}
         @if(Route::is('home_page'))
@@ -31,6 +28,16 @@
             @include('includes.pages.about')
         @endif
         {{-- Normal Blade Files --}}
+
+        {{-- With Livewire Components --}}
+        @if(Route::is('inquire_page'))
+            <livewire:inquire-component />
+        @endif
+
+        @if(Route::is('contact_page'))
+            <livewire:contact-component />
+         @endif
+        {{-- With Livewire Components --}}
     </main>
     @livewireScripts
 </body>

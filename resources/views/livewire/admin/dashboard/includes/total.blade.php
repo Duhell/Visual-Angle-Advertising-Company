@@ -35,7 +35,7 @@
         </div>
         <div class=" bg-blue-200 p-2 rounded text-blue-600 flex text-xs justify-between ">
             <span>Next: </span>
-            <span>{{ $nextVoucherToExpire->Voucher_Code }}</span>
+            <span>{{ $nextVoucherToExpire->Voucher_Code ?? "No voucher will expire." }}</span>
         </div>
     </div>
 </div>

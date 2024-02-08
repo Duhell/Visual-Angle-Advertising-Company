@@ -2,13 +2,14 @@
 
 namespace App\Livewire;
 
+use Exception;
 use App\Models\Inquire;
-use Livewire\Attributes\Layout;
-use Livewire\Attributes\Title;
-use Livewire\Attributes\Validate;
 use Livewire\Component;
+use Livewire\Attributes\Title;
+use Livewire\Attributes\Layout;
+use Livewire\Attributes\Validate;
+use Illuminate\Support\Facades\Log;
 
-#[Layout('index')]
 #[Title('Inquire | Visual Angle Advertising Company')]
 class InquireComponent extends Component
 {
@@ -23,13 +24,20 @@ class InquireComponent extends Component
 
 
     //* Method for sending inquiry form
-    //Todo: Add error handling, like try and catch
     public function send()
     {
         $this->validate();
-        Inquire::create($this->all());
-        session()->flash('success','Sent: Your Inquiry Has Been Sent Successfully! ');
-        $this->reset();
+        try{
+            Inquire::create($this->all());
+            session()->flash('success','Sent: Your Inquiry Has Been Sent Successfully! ');
+            $this->reset();
+        }catch(Exception $error){
+            Log::error('Database not connected @inquireComponent',[
+                'reason'=>$error->getMessage()
+            ]);
+            session()->flash('error','Not sent: Something went wrong! ');
+
+        }
     }
     public function render()
     {

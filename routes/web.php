@@ -10,12 +10,13 @@ use App\Livewire\Admin\Dashboard\Dashboard;
 use App\Livewire\Admin\Delivery\CreateDelivery;
 use App\Livewire\Admin\Inquire\ManageInquiries;
 use App\Livewire\Admin\Delivery\ManageDeliveries;
-
+use App\Livewire\ContactComponent;
 
 //* Guest Routes
 Route::get('/', HomeController::class)->name('home_page');
 Route::get('/about', HomeController::class)->name('about_page');
-Route::get('/inquire', InquireComponent::class)->name('inquire_page');
+Route::get('/inquire', HomeController::class)->name('inquire_page');
+Route::get('/contact', HomeController::class)->name('contact_page');
 
 
 //* Administrator Routes

@@ -5,14 +5,7 @@
             <small class="italic font-light">All fields are required.</small>
         </div>
 
-        @if(session('success'))
-        <div class="bg-green-200 text-green-800 flex items-center border border-green-600 gap-x-3 p-2.5 rounded-md mb-3">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-              </svg>
-            <span>{{ session('success') }}</span>
-        </div>
-        @endif
+        @include('success.success')
 		<form class="space-y-4" wire:submit='send'>
 			<div class="w-full">
 				<label class="sr-only" for="name">Name</label>

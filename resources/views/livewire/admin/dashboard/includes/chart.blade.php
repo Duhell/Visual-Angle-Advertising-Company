@@ -9,13 +9,12 @@
 @script
 <script>
     const ctx = document.getElementById('myChart');
-
     new Chart(ctx, {
       type: 'line',
       data: {
         labels:  Object.keys($wire.data_deliveries),
         datasets: [{
-          label: 'Deliveries per month',
+          label: `Deliveries per month`,
           data: Object.values($wire.data_deliveries),
           borderWidth: 1
         }]

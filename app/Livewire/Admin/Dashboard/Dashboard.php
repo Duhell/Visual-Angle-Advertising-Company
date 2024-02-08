@@ -41,14 +41,16 @@ class Dashboard extends Component
     }
 
     private function displayNumberOfDelivies($monthsAgo,$currentYear,$currentMonth,$previousMonth){
-        $this->data_deliveries = Customer::select(DB::raw('count(id) as `data`'), DB::raw("DATE_FORMAT(OrderDate, '%m') as month"))
+        $this->data_deliveries = Customer::select(DB::raw('count(id) as `data`'), DB::raw("DATE_FORMAT(OrderDate, '%m-%Y') as monthYear"))
         ->where('OrderDate', '>=', $monthsAgo)
-        ->groupBy('month')
+        ->groupBy('monthYear')
+        ->orderBy('OrderDate','ASC')
         ->get()
-        ->pluck('data', 'month');
+        ->pluck('data', 'monthYear');
 
-        $this->data_deliveries = $this->data_deliveries->mapWithKeys(function ($data, $month) {
-            return [date('F', mktime(0, 0, 0, $month, 10)) => $data]; // Convert month number to name
+        $this->data_deliveries = $this->data_deliveries->mapWithKeys(function ($data, $monthYear) {
+            list($month, $year) = explode('-', $monthYear);
+            return [date('F', mktime(0, 0, 0, $month, 10)) . " " . $year => $data];
         });
 
         $this->currentMonthDeliveries = Customer::whereYear('OrderDate', $currentYear)
