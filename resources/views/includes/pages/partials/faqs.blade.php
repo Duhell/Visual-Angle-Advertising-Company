@@ -8,19 +8,19 @@
             <details>
                 <summary class="flex items-center cursor-pointer focus:outline-none">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                        stroke="currentColor" class="w-6 h-6 text-blue-600">
+                        stroke="currentColor" class="w-6 h-6 hidden sm:block text-blue-600">
                         <path stroke-linecap="round" stroke-linejoin="round"
                             d="M3 4.5h14.25M3 9h9.75M3 13.5h9.75m4.5-4.5v12m0 0-3.75-3.75M17.25 21 21 17.25" />
                     </svg>
 
 
-                    <h1 class="mx-4 text-xl text-gray-700 dark:text-white">How can I pay for my appointment ?</h1>
+                    <h1 class="mx-4 text-md sm:text-xl text-gray-700 dark:text-white">How can I pay for my appointment ?</h1>
                 </summary>
 
                 <div class="flex mt-8 md:mx-10">
                     <span class="border border-blue-500"></span>
 
-                    <p class="max-w-3xl px-4 text-gray-500 dark:text-gray-300">
+                    <p class="max-w-3xl px-4 text-sm sm:text-base text-gray-500 dark:text-gray-300">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, eum quae. Harum officiis
                         reprehenderit ex quia ducimus minima id provident molestias optio nam vel, quidem iure
                         voluptatem, repellat et ipsa.
@@ -33,19 +33,19 @@
             <details>
                 <summary class="flex cursor-pointer items-center focus:outline-none">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                        stroke="currentColor" class="w-6 h-6 text-blue-600">
+                        stroke="currentColor" class="w-6 h-6 hidden sm:block text-blue-600">
                         <path stroke-linecap="round" stroke-linejoin="round"
                             d="M3 4.5h14.25M3 9h9.75M3 13.5h9.75m4.5-4.5v12m0 0-3.75-3.75M17.25 21 21 17.25" />
                     </svg>
 
-                    <h1 class="mx-4 text-xl text-gray-700 dark:text-white">What can I expect at my first consultation ?
+                    <h1 class="mx-4 text-md sm:text-xl text-gray-700 dark:text-white">What can I expect at my first consultation ?
                     </h1>
                 </summary>
 
                 <div class="flex mt-8 md:mx-10">
                     <span class="border border-blue-500"></span>
 
-                    <p class="max-w-3xl px-4 text-gray-500 dark:text-gray-300">
+                    <p class="max-w-3xl px-4 text-sm sm:text-base text-gray-500 dark:text-gray-300">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, eum quae. Harum officiis
                         reprehenderit ex quia ducimus minima id provident molestias optio nam vel, quidem iure
                         voluptatem, repellat et ipsa.
@@ -58,12 +58,12 @@
             <div>
                 <button class="flex items-center focus:outline-none">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                        stroke="currentColor" class="w-6 h-6 text-blue-600">
+                        stroke="currentColor" class="w-6 h-6 hidden sm:block text-blue-600">
                         <path stroke-linecap="round" stroke-linejoin="round"
                             d="M3 4.5h14.25M3 9h9.75M3 13.5h9.75m4.5-4.5v12m0 0-3.75-3.75M17.25 21 21 17.25" />
                     </svg>
 
-                    <h1 class="mx-4 text-xl text-gray-700 dark:text-white">What are your opening hours ?</h1>
+                    <h1 class="mx-4 text-md sm:text-xl text-gray-700 dark:text-white">What are your opening hours ?</h1>
                 </button>
             </div>
 
@@ -72,12 +72,12 @@
             <div>
                 <button class="flex items-center focus:outline-none">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                        stroke="currentColor" class="w-6 h-6 text-blue-600">
+                        stroke="currentColor" class="w-6 h-6 hidden sm:block text-blue-600">
                         <path stroke-linecap="round" stroke-linejoin="round"
                             d="M3 4.5h14.25M3 9h9.75M3 13.5h9.75m4.5-4.5v12m0 0-3.75-3.75M17.25 21 21 17.25" />
                     </svg>
 
-                    <h1 class="mx-4 text-xl text-gray-700 dark:text-white">Do I need a referral ?</h1>
+                    <h1 class="mx-4 text-md sm:text-xl text-gray-700 dark:text-white">Do I need a referral ?</h1>
                 </button>
             </div>
 
@@ -86,12 +86,12 @@
             <div>
                 <button class="flex items-center focus:outline-none">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                        stroke="currentColor" class="w-6 h-6 text-blue-600">
+                        stroke="currentColor" class="w-6 h-6 hidden sm:block text-blue-600">
                         <path stroke-linecap="round" stroke-linejoin="round"
                             d="M3 4.5h14.25M3 9h9.75M3 13.5h9.75m4.5-4.5v12m0 0-3.75-3.75M17.25 21 21 17.25" />
                     </svg>
 
-                    <h1 class="mx-4 text-xl text-gray-700 dark:text-white">Is the cost of the appointment covered by
+                    <h1 class="mx-4 text-md sm:text-xl text-gray-700 dark:text-white">Is the cost of the appointment covered by
                         private health insurance ?</h1>
                 </button>
             </div>

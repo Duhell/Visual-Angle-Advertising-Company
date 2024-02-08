@@ -1,4 +1,4 @@
-<section class="bg-gray-900 mt-10 text-slate-300">
+<section class="bg-gray-900 mt-10 text-sm sm:text-base text-slate-300" data-aos='fade-up'>
     <div class="container px-6 py-12 mx-auto">
         <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
             <div>

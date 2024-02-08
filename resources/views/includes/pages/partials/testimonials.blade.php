@@ -1,4 +1,4 @@
-<section class="bg-white py-8 dark:bg-gray-900">
+<section class="bg-white py-8 dark:bg-gray-900" data-aos="fade-up">
     <div class="container px-6 py-10 mx-auto">
         <h1 class="text-2xl font-semibold text-center text-gray-800 capitalize lg:text-3xl dark:text-white">
             What clients saying
@@ -20,7 +20,7 @@
             </button>
 
             <div>
-                <p class="flex items-center text-center text-gray-500 lg:mx-8">
+                <p class="flex items-center text-sm sm:text-base text-center text-gray-500 lg:mx-8">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam, quam. Odio voluptatem officiis
                     eos illo! Pariatur, totam alias. Beatae accusamus earum quos obcaecati minima molestias. Possimus
                     minima dolores itaque! Esse! Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea voluptates

@@ -1,13 +1,13 @@
-<footer class="bg-white dark:bg-gray-900">
+<footer class="bg-white mt-5 dark:bg-gray-900">
     <div class="container px-6 py-12 mx-auto">
         <div class="md:flex md:-mx-3 md:items-center md:justify-between">
-            <h1 class="text-xl font-semibold tracking-tight text-gray-800 md:mx-3 xl:text-2xl dark:text-white">Subscribe
-                our newsletter to get update.</h1>
+            <h1 class="text-xl font-semibold tracking-tight text-gray-800 md:mx-3 xl:text-2xl dark:text-white">Choose or
+                customize your road signs.</h1>
 
             <div class="mt-6 md:mx-3 shrink-0 md:mt-0 md:w-auto">
                 <a href="#"
                     class="inline-flex items-center justify-center w-full px-4 py-2 text-sm text-white duration-300 bg-gray-800 rounded-lg gap-x-3 hover:bg-gray-700 focus:ring focus:ring-gray-300 focus:ring-opacity-80">
-                    <span>Sign Up Now</span>
+                    <span>Inquire Now</span>
 
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="w-5 h-5">
@@ -75,7 +75,7 @@
                         class="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500">+880
                         768 473 4978</a>
                     <a href="#"
-                        class="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500">info@merakiui.com</a>
+                        class="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500">info@visual.com</a>
                 </div>
             </div>
         </div>
@@ -88,7 +88,7 @@
                 Visual Angle Advertising Company
             </a>
 
-            <p class="mt-4 text-sm text-gray-500 sm:mt-0 dark:text-gray-300">© Copyright 2021. All Rights Reserved.</p>
+            <p class="mt-4 text-sm text-gray-500 sm:mt-0 dark:text-gray-300">© Copyright 2024. All Rights Reserved.</p>
         </div>
     </div>
 </footer>
