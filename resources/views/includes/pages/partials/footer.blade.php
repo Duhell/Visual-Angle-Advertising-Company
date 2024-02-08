@@ -5,7 +5,7 @@
                 customize your road signs.</h1>
 
             <div class="mt-6 md:mx-3 shrink-0 md:mt-0 md:w-auto">
-                <a href="#"
+                <a href="/inquire"
                     class="inline-flex items-center justify-center w-full px-4 py-2 text-sm text-white duration-300 bg-gray-800 rounded-lg gap-x-3 hover:bg-gray-700 focus:ring focus:ring-gray-300 focus:ring-opacity-80">
                     <span>Inquire Now</span>
 

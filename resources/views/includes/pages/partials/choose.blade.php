@@ -1,8 +1,7 @@
-<section class="container px-6 py-16 mx-auto"  data-aos="fade-up" data-aos-duration="600"
->
-    <div class="items-center lg:flex">
+<section id="learn-more" class="container px-6 py-16 mx-auto"  data-aos="fade-up" data-aos-duration="600">
+    <div  class="items-center lg:flex">
         <div class="w-full lg:w-1/2">
-            <div class="lg:max-w-lg">
+            <div  class="lg:max-w-lg">
                 <h1 class="text-3xl font-semibold text-gray-800 dark:text-white lg:text-4xl">Best place to choose <br>
                     your <span class="text-blue-500 ">signs</span></h1>
 
