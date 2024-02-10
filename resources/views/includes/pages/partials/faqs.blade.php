@@ -23,7 +23,7 @@
                     <p class="max-w-3xl px-4 text-sm sm:text-base text-gray-500 dark:text-gray-300">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, eum quae. Harum officiis
                         reprehenderit ex quia ducimus minima id provident molestias optio nam vel, quidem iure
-                        voluptatem, repellat et ipsa.
+                        voluptatem, repellat et ipsa ( sample text ).
                     </p>
                 </div>
             </details>
@@ -48,7 +48,7 @@
                     <p class="max-w-3xl px-4 text-sm sm:text-base text-gray-500 dark:text-gray-300">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, eum quae. Harum officiis
                         reprehenderit ex quia ducimus minima id provident molestias optio nam vel, quidem iure
-                        voluptatem, repellat et ipsa.
+                        voluptatem, repellat et ipsa ( sample text ).
                     </p>
                 </div>
             </details>

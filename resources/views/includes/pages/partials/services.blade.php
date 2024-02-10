@@ -4,8 +4,7 @@
             <h2 class="text-3xl font-bold sm:text-4xl">Our Services</h2>
 
             <p class="mt-4 text-xs sm:text-sm text-gray-300">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat dolores iure fugit totam
-                iste obcaecati.
+                Quality, creativity, and reliability in every sign
             </p>
         </div>
 
