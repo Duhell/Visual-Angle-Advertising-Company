@@ -1,7 +1,9 @@
 <nav class="navbar-sticky navbar-glass">
     <div class="navbar bg-transparent mx-auto container shadow-none ">
         <div class="navbar-start">
-            <a wire:navigate href="/" class="navbar-item font-extrabold text-blue-500">VAAC</a>
+            <a wire:navigate href="/" class="navbar-item font-extrabold text-blue-500">
+                <img class="w-12 h-8" src="{{ asset('logo.png') }}" alt="Visual Angle Advertising Logo">
+            </a>
         </div>
         <div class="navbar-end text-sm">
             <a wire:navigate href="/" class="navbar-item {{ request()->routeIs('home_page') ? "decoration-2 decoration-blue-600 underline underline-offset-8 text-blue-500" : "" }}">Home</a>

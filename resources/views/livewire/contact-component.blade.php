@@ -1,4 +1,4 @@
-<section class="">
+<section class="mb-10">
     <div class="container px-6 py-12 mx-auto">
         <div class="text-center">
             <p class="font-medium text-blue-500 dark:text-blue-400">Contact us</p>

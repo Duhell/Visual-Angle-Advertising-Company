@@ -21,11 +21,7 @@
 
             <div>
                 <p class="flex items-center text-sm sm:text-base text-center text-gray-500 lg:mx-8">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam, quam. Odio voluptatem officiis
-                    eos illo! Pariatur, totam alias. Beatae accusamus earum quos obcaecati minima molestias. Possimus
-                    minima dolores itaque! Esse! Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea voluptates
-                    fugiat corrupti laudantium dolores reiciendis pariatur esse quod nihil quia cupiditate debitis
-                    quisquam nemo, accusamus animi explicabo? Architecto, unde laboriosam?
+                    We hired this signage company to design and install directional signs for our new office building. They did an amazing job from start to finish. They listened to our requirements, offered creative suggestions, and delivered high-quality signs on time and within budget. We are very happy with their service and would highly recommend them to anyone looking for professional signage solutions.
                 </p>
 
                 <div class="flex flex-col items-center justify-center mt-8">
